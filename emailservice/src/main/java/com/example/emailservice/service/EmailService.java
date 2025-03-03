@@ -9,6 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Service
 public class EmailService {
@@ -36,7 +37,7 @@ public class EmailService {
         String movieTitle = bookingDTO.getMovieName();
         String theaterName = bookingDTO.getTheaterName();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMMM, dd, yyyy");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a", Locale.US);
         String formattedDate = bookingDTO.getShowTime().format(dateFormatter);
         String showTime = bookingDTO.getShowTime().format(timeFormatter);
 
